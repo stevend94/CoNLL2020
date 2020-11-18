@@ -1,5 +1,5 @@
 # CoNLL2020
-![No Maintenance Intended](https://img.shields.io/badge/No%20Maintenance%20Intended-%E2%9C%95-red.svg)
+![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/stevend94/CoNLL2020.js/graphs/commit-activity)
 ![TensorFlow Requirement: 1.x](https://img.shields.io/badge/TensorFlow%20Requirement-1.x-brightgreen)
 ![Commit Activity](https://img.shields.io/github/commit-activity/m/stevend94/CoNLL2020)
 ![Complete](https://img.shields.io/badge/Complete-pending-orange)
