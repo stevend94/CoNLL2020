@@ -1,0 +1,1 @@
+Folder with code for performing BrainBench Evaluation. The code is modified for these experiments and to work with python 3. Alternatively you can go to http://www.langlearnlab.cs.uvic.ca/brainbench/ and upload the embeddings manually. 
