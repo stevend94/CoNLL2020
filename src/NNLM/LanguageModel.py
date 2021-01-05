@@ -28,7 +28,13 @@ import argparse
 import numpy as np
 import os
 from collections import Counter
+import requests
 
+PENN_URLS = {
+    'Train': "https://raw.githubusercontent.com/wojzaremba/lstm/master/data/ptb.train.txt",
+    'Test': "https://raw.githubusercontent.com/wojzaremba/lstm/master/data/ptb.test.txt",
+    'Valid': "https://raw.githubusercontent.com/wojzaremba/lstm/master/data/ptb.valid.txt"
+}
 
 def none_pointer_copy(dictionary):
     new_dictionary = {}
@@ -38,10 +44,33 @@ def none_pointer_copy(dictionary):
     return new_dictionary
 
 
+def get_data():
+    """
+        Function to get PennTreeBank data (train, test and validation splits)
+    """
+    
+    print("Downloading PennTreeBank Data from  https://raw.githubusercontent.com/wojzaremba/lstm/master/data ...  ", end = "")
+    for url_key in PENN_URLS:
+        url = PENN_URLS[url_key]
+        data = requests.get(url, stream = True)
+        file_name = url.split("/")[-1]
+        
+        with open('data/PennTreeBank/' + file_name, 'wb') as f:
+            for chunk in data.iter_content(chunk_size = 1024):
+                if chunk:
+                    f.write(chunk)
+                    
+    print("Done")
+
+
 def buildData(path, dsm):
     '''
         Function to process ptb dataset
     '''
+    
+    if len(os.listdir(path)) == 0:
+        get_data()
+        
 
     # Load all data from path
     with open(path + '/ptb.train.txt', 'r') as f:
@@ -315,7 +344,7 @@ if __name__ == "__main__":
 
     parser.add_argument('--data_path', '-d', action = 'store',
                         required = False,
-                        default = '',
+                        default = 'data/PennTreeBank/processed',
                         help = ('Function to get data for lm_1b model'))
 
     parser.add_argument('--size', '-s', action = 'store',
@@ -421,10 +450,9 @@ if __name__ == "__main__":
         history['test'] = test_perplexity
 
         np.save(args.save_path + '/' + name + '_history.npy', history)
-    elif:
-        buildData(path = args.data_path, dsm = dsm)
-        
     else:
-        raise Exception('No commands provided. Please choose one of the options.')
+        buildData(path = args.data_path, dsm = dsm)
+#     else:
+#         raise Exception('No commands provided. Please choose one of the options.')
 
     
