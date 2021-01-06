@@ -3,7 +3,7 @@
 if [ $# -eq 0 ]; then
   # used if no arguments given
   echo "No arguments provided so using default values"
- model_paths=('../DSMs/word2vec.npy'
+  MODEL_PATHS=('../DSMs/word2vec.npy'
 #              '../DSMs/fasttext.npy'
 #              '../DSMs/glove.npy'
              '../DSMs/output_embeddings.npy'
@@ -12,10 +12,10 @@ if [ $# -eq 0 ]; then
     
 else
   # else use arguments
-  model_paths=( "$@" )
+  MODEL_PATHS=( "$@" )
 fi
 
-for model_path in ${model_paths[@]}; do
+for model_path in ${MODEL_PATHS[@]}; do
   echo $model_path
   start=`date +%s`
 

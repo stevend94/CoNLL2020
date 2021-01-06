@@ -4,12 +4,12 @@ python lm_1b_eval.py --mode get_data
 echo "RETRIEVING LSTM MODEL WEIGHTS"
 python lm_1b_eval.py --mode get_model
 
-model_paths=('DSMs/word2vec.npy'
+MODEL_PATHS=('DSMs/word2vec.npy'
              'DSMs/fasttext.npy'
              'DSMs/glove.npy'
              'DSMs/input_embeddings.npy'
-             'DSMs/max_dsm.npy'
-             'DSMs/weight_dsm.npy')
+             'DSMs/output_embeddings.npy'
+             'DSMs/activation_embeddings.npy')
              
              
 # Retrieve input and output embeddings, and build DSMs
@@ -60,7 +60,7 @@ cd ..
 
 # write embeddings to experiment folder for intrinsic tasks
 echo "RUN INTRINSIC EVALUATIONS (WORD SIMILARITY BENCHMARKS)"
-for model_path in ${model_paths[@]}; do
+for model_path in ${MODEL_PATHS[@]}; do
     python utils.py --vecto_write True -p $model_path
 done
 
