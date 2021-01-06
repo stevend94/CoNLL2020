@@ -1,7 +1,7 @@
 # CoNLL2020
 ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
 ![TensorFlow Requirement: 1.x](https://img.shields.io/badge/TensorFlow%20Requirement-1.x-brightgreen)
-![Commit Activity](https://api.github.com/repos/stevend94/CoNLL2020/stats/commit_activity)
+![Commit Activity](https://img.shields.io/github/last-commit/stevend94/CoNLL2020?color=blue)
 ![Complete](https://img.shields.io/badge/Complete-90%25-green)
 
 # Paper:
